@@ -8,17 +8,18 @@ package org.ulr.kata;
  */
 public class BowlingGame {
 
-    private int score;
+    private int[] rolls = new int[20];
+    private int currentRoll = 0;
 
-    public void roll(int i) {
-        // 1) on pourrait utiliser un flag pour marquer le spare
-        // 2) ou se dire que la conception est mauvaise ...
-        // roll = calcul le score mais le nom n'indique pas ca
-        score += i;
+    public void roll(int pins) {
+        rolls[currentRoll++] = pins;
     }
 
     public int score() {
-        // score ne calcule pas le score
+        int score = 0;
+        for (int i = 0; i < rolls.length; i++) {
+            score += rolls[i];
+        }
         return score;
     }
 }
